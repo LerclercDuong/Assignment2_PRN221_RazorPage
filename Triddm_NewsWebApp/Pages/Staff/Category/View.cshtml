@@ -1,0 +1,34 @@
+﻿@page
+@model Triddm_NewsWebApp.Pages.Staff.Category.ViewModel
+@{
+}
+
+
+<div>
+    <div class="container">
+        <h1>Create Category</h1>
+    </div>
+</div>
+<div>
+    <div class="container">
+        <form method="post">
+            <div class="mb-3">
+                <label class="control-label">Name:</label>
+                <input id="name" asp-for="category.CategoryId" class="form-control" readonly="true"/>
+            </div>
+            <div class="mb-3">
+                <label class="control-label">Name:</label>
+                <input id="name" asp-for="category.CategoryName" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="control-label">Description:</label>
+                <textarea asp-for="category.CategoryDesciption" class="form-control" rows="4"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary" style="margin:5px" asp-page-handler="Update">Update</button>
+                <button type="button" class="btn btn-secondary" style="margin:5px" onclick="window.location.href='@Url.Page("/Staff/Category/List")'">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+﻿@page
+@model Triddm_NewsWebApp.Pages.Staff.PersonalManagement.NewsHistoryModel
+@{
+    ViewData["Title"] = "News";
+}
+<div class="row">
+    <button type="button" class="btn btn-secondary" style="margin:5px" onclick="window.location.href='@Url.Page("/Staff/Index")'">Cancel</button>
+    <div class="col-md-12">
+        <form method="post">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Title:</label>
+                <div class="col-sm-10">
+                    <input asp-for="NewArticle.NewsTitle" class="form-control" required />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Contents:</label>
+                <div class="col-sm-10">
+                    <textarea asp-for="NewArticle.NewsContent" class="form-control" rows="3" required></textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Category Id:</label>
+                <div class="col-sm-10">
+                    <input asp-for="NewArticle.CategoryId" class="form-control" type="number" required />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Status:</label>
+                <div class="col-sm-10">
+                    <select asp-for="NewArticle.NewsStatus" class="form-control" required>
+                        <option value="Draft">Draft</option>
+                        <option value="Published">Published</option>
+                        <option value="Archived">Archived</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Created By Id:</label>
+                <div class="col-sm-10">
+                    <input asp-for="NewArticle.CreatedById" class="form-control" type="number" required />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-primary">Add News Article</button>
+                </div>
+            </div>
+        </form>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Created Date</th>
+                    <th>Contents</th>
+                    <th>Category Id</th>
+                    <th>Status</th>
+                    <th>Created By Id</th>
+                    <th>Modified Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.newsArticles != null)
+                {
+                    @foreach (var item in Model.newsArticles)
+                    {
+                        <tr>
+                            <td>@item.NewsArticleId</td>
+                            <td>@item.NewsTitle</td>
+                            <td>@item.CreatedDate.ToString()</td>
+                            <td>@item.NewsContent</td>
+                            <td>@item.CategoryId</td>
+                            <td>@item.NewsStatus</td>
+                            <td>@item.CreatedById</td>
+                            <td>@item.ModifiedDate?.ToString("yyyy-MM-dd")</td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿@page
+@model Triddm_NewsWebApp.Pages.Admin.IndexModel
+@{
+    ViewData["Title"] = "AdminWelcome";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        /* Add your custom CSS styles here */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .button {
+            margin: 10px;
+            width: 200px;
+            height: 50px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="button-container">
+            <button class="button" onclick="location.href='@Url.Page("/Admin/Account/List")'">Account Management</button>
+            <button class="button" onclick="location.href='@Url.Page("/Admin/ReportArticle")'">Report</button>
+        </div>
+    </div>
+</body>
+</html>

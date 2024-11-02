@@ -1,0 +1,70 @@
+﻿@page
+@model Triddm_NewsWebApp.Pages.Admin.Account.ViewModel
+@{
+    ViewData["Title"] = "Account Details";
+}
+
+<div class="container">
+    <form method="post">
+        <h2 class="header">Account Details</h2>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Account ID:</label>
+            <div class="col-sm-10">
+                <input class="form-control" readonly asp-for="Account.AccountId" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Account Name:</label>
+            <div class="col-sm-10">
+                <input class="form-control" asp-for="Account.AccountName" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Account Email:</label>
+            <div class="col-sm-10">
+                <input class="form-control" asp-for="Account.AccountEmail" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Account Role:</label>
+            <div class="col-sm-10">
+                <select class="form-control" asp-for="Account.AccountRole">
+                    <option value="1">Admin</option>
+                    <option value="2">User</option>
+                    <!-- Add more roles as needed -->
+                </select>
+            </div>
+        </div>
+
+        @*     <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Account Password:</label>
+        <div class="col-sm-10">
+        <input type="password" class="form-control" asp-for="Account.AccountPassword" />
+        </div>
+        </div> *@
+
+        <div class="form-group row">
+            <div class="col-sm-10 offset-sm-2">
+                <button type="submit" asp-page-handler="Update" class="btn btn-primary">Update</button>
+                <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Page("/Admin/Index")'">Close</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<style>
+    .container {
+        margin: 20px;
+    }
+
+    .header {
+        margin-left: 156px;
+        margin-top: -3px;
+        font-size: 30px;
+    }
+</style>

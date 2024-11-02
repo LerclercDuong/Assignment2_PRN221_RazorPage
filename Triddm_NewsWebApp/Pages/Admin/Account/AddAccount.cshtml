@@ -1,0 +1,61 @@
+﻿@page
+@model Triddm_NewsWebApp.Pages.Admin.Account.AddAccountModel
+@{
+    ViewData["Title"] = "Account Management Create";
+}
+
+<div class="container">
+    <form method="post">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Account ID:</label>
+            <div class="col-sm-10">
+                <input asp-for="accountRequest.AccountId" class="form-control" readonly />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Account Name:</label>
+            <div class="col-sm-10">
+                <input asp-for="accountRequest.AccountName" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Account Email:</label>
+            <div class="col-sm-10">
+                <input asp-for="accountRequest.AccountEmail" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Account Role:</label>
+            <div class="col-sm-10">
+                <select asp-for="accountRequest.AccountRole" class="form-control">
+                    <!-- Populate options here -->
+                    <option value="1">Admin</option>
+                    <option value="2">User</option>
+                </select>
+            </div>  
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Account Password:</label>
+            <div class="col-sm-10">
+                <input asp-for="accountRequest.AccountPassword" class="form-control" type="password" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-10 offset-sm-2">
+                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Page("/Admin/Index")'">Close</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<style>
+    .container {
+        margin: 10px;
+    }
+</style>

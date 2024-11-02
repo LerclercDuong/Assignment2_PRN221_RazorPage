@@ -1,0 +1,82 @@
+﻿@page
+@model Triddm_NewsWebApp.Pages.Admin.ReportArticleModel
+@{
+    ViewData["Title"] = "Time Picker";
+}
+
+<div class="container">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="StartingTime">Starting Time:</label>
+                    <input type="date" id="StartingTime" asp-for="StartingTime" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="EndTime">End Time:</label>
+                    <input type="date" id="EndTime" asp-for="EndingTime" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary" asp-page-handler="Go">Go</button>
+                <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Page("/Admin/Index")'">
+                    Back
+                </button>
+            </div>
+        </div>
+    </form>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Created Date</th>
+                        <th>Contents</th>
+                        <th>Category Id</th>
+                        <th>Status</th>
+                        <th>Created By Id</th>
+                        <th>Modified Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if(Model.newsArticles != null)
+                    {
+                        @foreach (var item in Model.newsArticles)
+                        {
+                            <tr>
+                                <td>@item.NewsArticleId</td>
+                                <td>@item.NewsTitle</td>
+                                <td>@item.CreatedDate.ToString()</td>
+                                <td>@item.NewsContent</td>
+                                <td>@item.CategoryId</td>
+                                <td>@item.NewsStatus</td>
+                                <td>@item.CreatedById</td>
+                                <td>@item.ModifiedDate?.ToString("yyyy-MM-dd")</td>
+                            </tr>
+                        }
+                    }
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function submitForm() {
+            document.getElementById('filterForm').submit();
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+}

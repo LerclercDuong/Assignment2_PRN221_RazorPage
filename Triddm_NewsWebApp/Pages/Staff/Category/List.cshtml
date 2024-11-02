@@ -1,0 +1,53 @@
+﻿@page
+@model Triddm_NewsWebApp.Pages.Staff.Category.ListModel
+@{
+}
+
+<div>
+    <div class="container">
+        <h1>List Category</h1>
+    </div>
+</div>
+<div>
+    <div class="container">
+        <div class="sidebar">
+            <label>Data</label>
+        </div>
+        <div class="content">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <!-- Add appropriate table headers here -->
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>View</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cat in Model.categories)
+                    {
+                        <tr>
+                            <td>@cat.CategoryId</td>
+                            <td>@cat.CategoryName</td>
+                            <td>@cat.CategoryDesciption</td>
+                            <td><a asp-page="./View" asp-route-id="@cat.CategoryId">View</a></td>
+                            <td>
+                                <form method="post">
+                                    <input type="hidden" asp-for="CategoryId" value="@cat.CategoryId"></input>
+                                    <button type="submit" asp-page-handler="Delete">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="actions">
+        <button class="btn btn-primary" onclick="window.location.href='@Url.Page("/Staff/Add")'">New</button>
+        <button type="button" class="btn btn-secondary" style="margin:5px" onclick="window.location.href='@Url.Page("/Staff/Index")'">Cancel</button>
+    </div>
+</div>
